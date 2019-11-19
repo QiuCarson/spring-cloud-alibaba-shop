@@ -2,6 +2,10 @@
 
 开发中。。。。
 
+版本
+
+spring boot 
+
 ## 主要技术栈
 
 -  核心框架：Spring Boot + Spring Cloud Alibaba
