@@ -11,6 +11,7 @@
 
     <artifactId>user-api</artifactId>
     <packaging>jar</packaging>
+    <description>用户接口</description>
 
 
 </project>
