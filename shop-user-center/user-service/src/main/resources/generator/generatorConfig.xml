@@ -37,6 +37,8 @@
         <!--为哪张表生成代码-->
         <table tableName="${tableName}">
             <generatedKey column="id" sqlStatement="JDBC"/>
+            <!--去除表前缀-->
+            <domainObjectRenamingRule searchString="^Tb_" replaceString="" />
         </table>
     </context>
 </generatorConfiguration>
