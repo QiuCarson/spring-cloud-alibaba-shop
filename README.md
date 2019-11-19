@@ -2,11 +2,12 @@
 
 开发中。。。。
 
-版本
+### 版本
 
-spring boot : 2.1.10.RELEASE
-spring cloud : Greenwich.SR3
-spring cloud alibaba : 2.1.1.RELEASE
+- spring boot : 2.1.10.RELEASE
+- spring cloud : Greenwich.SR3
+- spring cloud alibaba : 2.1.1.RELEASE
+- JDK : 1.8
 
 
 
