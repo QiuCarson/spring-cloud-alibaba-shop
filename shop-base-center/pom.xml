@@ -13,7 +13,13 @@
         <module>mail-service</module>
         <module>sms-service</module>
         <module>pay-service</module>
+        <module>base-api</module>
     </modules>
 
 
+    <parent>
+        <groupId>com.phpsong</groupId>
+        <artifactId>shop-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 </project>
