@@ -50,3 +50,8 @@
 | Nginx    | 80       | 反向代理               |
 |          |          |                        |
 
+### 任务列表
+
+- [ ] 整合通用mapper
+
+- [ ] [使用通用mapper生成器](https://github.com/abel533/Mapper/wiki/4.1.mappergenerator)
