@@ -4,7 +4,11 @@
 
 版本
 
-spring boot 
+spring boot : 2.1.10.RELEASE
+spring cloud : Greenwich.SR3
+spring cloud alibaba : 2.1.1.RELEASE
+
+
 
 ## 主要技术栈
 
