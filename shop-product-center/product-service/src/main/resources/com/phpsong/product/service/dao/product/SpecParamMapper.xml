@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.phpsong.product.service.dao.product.SpecParamMapper">
+  <resultMap id="BaseResultMap" type="com.phpsong.product.service.domain.entity.product.SpecParam">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="cid" jdbcType="BIGINT" property="cid" />
+    <result column="group_id" jdbcType="BIGINT" property="groupId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="numeric" jdbcType="BIT" property="numeric" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="generic" jdbcType="BIT" property="generic" />
+    <result column="searching" jdbcType="BIT" property="searching" />
+    <result column="segments" jdbcType="VARCHAR" property="segments" />
+  </resultMap>
+</mapper>

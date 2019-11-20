@@ -1,1 +1,16 @@
-
+server:
+  port: 8101
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring_cloud_alibaba_shop?serverTimezone=UTC
+    hikari:
+      username: root
+      password: root
+      # >= 6.x: com.mysql.cj.jdbc.Driver
+      # <= 5.x: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver

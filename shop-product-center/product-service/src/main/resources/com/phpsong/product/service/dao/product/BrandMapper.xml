@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.phpsong.product.service.dao.product.BrandMapper">
+  <resultMap id="BaseResultMap" type="com.phpsong.product.service.domain.entity.product.Brand">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="letter" jdbcType="CHAR" property="letter" />
+  </resultMap>
+  <insert id="saveCategoryBrand">
+    INSERT
+  </insert>
+</mapper>
