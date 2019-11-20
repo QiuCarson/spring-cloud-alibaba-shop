@@ -31,6 +31,8 @@
         <swagger2.version>2.9.2</swagger2.version>
         <lombok.version>1.18.10</lombok.version>
         <mybatis.version>2.1.5</mybatis.version>
+        <hutool.version>5.0.6</hutool.version>
+        <rocketmq.version>2.0.3</rocketmq.version>
      </properties>
 
 
@@ -85,6 +87,18 @@
                 <groupId>tk.mybatis</groupId>
                 <artifactId>mapper-spring-boot-starter</artifactId>
                 <version>${mybatis.version}</version>
+            </dependency>
+            <!--hutool工具集合-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <!--rocket mq-->
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-spring-boot-starter</artifactId>
+                <version>${rocketmq.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

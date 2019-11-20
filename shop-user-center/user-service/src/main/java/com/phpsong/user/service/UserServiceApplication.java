@@ -9,7 +9,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @Date: 2019/11/19 11:01
  */
 @SpringBootApplication
-@MapperScan(basePackages = "com.phpsong.use.service.dao")
+@MapperScan(basePackages = "com.phpsong.user.service.dao")
 public class UserServiceApplication {
     public static void main(String[] args){
         SpringApplication.run(UserServiceApplication.class, args);
