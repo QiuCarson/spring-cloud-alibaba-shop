@@ -1,7 +1,6 @@
 package com.phpsong.product.service.service;
 
-import com.leyou.item.pojo.Category;
-import com.phpsong.product.service.domain.entity.product.Category;
+import com.phpsong.product.api.dto.CategoryDTO;
 
 import java.util.List;
 
@@ -12,9 +11,9 @@ import java.util.List;
 public interface CategoryService {
 
 
-    List<Category> queryCategoryByPid(Long pid);
+    List<CategoryDTO> queryCategoryByPid(Long pid);
 
-    List<Category> queryCategoryByIds(List<Long> ids);
+    List<CategoryDTO> queryCategoryByIds(List<Long> ids);
 
-    List<Category> queryAllByCid3(Long id);
+    List<CategoryDTO> queryAllByCid3(Long id);
 }

@@ -10,4 +10,8 @@
     <result column="seckill_total" jdbcType="INTEGER" property="seckillTotal" />
     <result column="stock" jdbcType="INTEGER" property="stock" />
   </resultMap>
+
+  <update id="decreaseStock">
+    update tb_stock set stock = stock - #{num} where sku_id = #{skuId} and stock >= #{num}
+  </update>
 </mapper>

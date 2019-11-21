@@ -10,7 +10,11 @@
     <result column="image" jdbcType="VARCHAR" property="image" />
     <result column="letter" jdbcType="CHAR" property="letter" />
   </resultMap>
-  <insert id="saveCategoryBrand">
-    INSERT
-  </insert>
+
+  <select id="queryCategoryByBid" resultType="com.phpsong.product.service.domain.entity.product.Category">
+    select * from tb_category where id in (select category_id from tb_category_brand where brand_id = #{bid})
+  </select>
+  <select id="queryBrandByCid" resultType="com.phpsong.product.service.domain.entity.product.Brand">
+    select * from tb_brand where id in (select brand_id from tb_category_brand where category_id = #{cid})
+  </select>
 </mapper>

@@ -1,7 +1,7 @@
 package com.phpsong.product.service.service;
 
-import com.leyou.item.pojo.SpecGroup;
-import com.leyou.item.pojo.SpecParam;
+import com.phpsong.product.api.dto.SpecGroupDTO;
+import com.phpsong.product.api.dto.SpecParamDTO;
 
 import java.util.List;
 
@@ -11,21 +11,21 @@ import java.util.List;
  */
 public interface SpecService {
 
-    List<SpecGroup> querySpecGroupByCid(Long cid);
+    List<SpecGroupDTO> querySpecGroupByCid(Long cid);
 
-    void saveSpecGroup(SpecGroup specGroup);
+    void saveSpecGroup(SpecGroupDTO specGroup);
 
     void deleteSpecGroup(Long id);
 
-    void updateSpecGroup(SpecGroup specGroup);
+    void updateSpecGroup(SpecGroupDTO specGroup);
 
-    List<SpecParam> querySpecParams(Long gid, Long cid, Boolean searching, Boolean generic);
+    List<SpecParamDTO> querySpecParams(Long gid, Long cid, Boolean searching, Boolean generic);
 
-    void saveSpecParam(SpecParam specParam);
+    void saveSpecParam(SpecParamDTO specParam);
 
-    void updateSpecParam(SpecParam specParam);
+    void updateSpecParam(SpecParamDTO specParam);
 
     void deleteSpecParam(Long id);
 
-    List<SpecGroup> querySpecsByCid(Long cid);
+    List<SpecGroupDTO> querySpecsByCid(Long cid);
 }

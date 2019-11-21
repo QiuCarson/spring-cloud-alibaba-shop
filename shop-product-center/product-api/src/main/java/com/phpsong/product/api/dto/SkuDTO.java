@@ -1,4 +1,4 @@
-package com.phpsong.product.service.domain.entity.product;
+package com.phpsong.product.api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,25 +6,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import javax.persistence.*;
 
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
 @Builder
-@Table(name = "tb_sku")
-public class Sku {
+public class SkuDTO {
     /**
      * sku id
      */
-    @Id
-    @GeneratedValue(generator = "JDBC")
     private Long id;
 
     /**
      * spu id
      */
-    @Column(name = "spu_id")
     private Long spuId;
 
     /**
@@ -50,7 +45,6 @@ public class Sku {
     /**
      * sku的特有规格参数键值对，json格式，反序列化时请使用linkedHashMap，保证有序
      */
-    @Column(name = "own_spec")
     private String ownSpec;
 
     /**
@@ -61,14 +55,15 @@ public class Sku {
     /**
      * 添加时间
      */
-    @Column(name = "create_time")
     private Date createTime;
 
     /**
      * 最后修改时间
      */
-    @Column(name = "last_update_time")
     private Date lastUpdateTime;
 
-
+    /**
+     * 库存
+     */
+    private Integer stock;
 }

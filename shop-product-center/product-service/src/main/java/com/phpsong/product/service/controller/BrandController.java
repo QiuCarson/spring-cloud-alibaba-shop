@@ -1,11 +1,9 @@
 package com.phpsong.product.service.controller;
 
-import cn.hutool.db.PageResult;
-import com.leyou.common.vo.PageResult;
-import com.leyou.item.pojo.Brand;
-import com.leyou.item.vo.BrandVo;
-import com.leyou.service.service.BrandService;
+
+import com.phpsong.common.vo.PageResult;
 import com.phpsong.product.api.dto.BrandDTO;
+import com.phpsong.product.api.dto.UpdateBrandDTO;
 import com.phpsong.product.service.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,13 +52,13 @@ public class BrandController {
     /**
      * 新增品牌
      *
-     * @param brand
-     * @param cids  品牌所在的分类ID（多个分类）
+     * @param brandDTO
+     * @param cids     品牌所在的分类ID（多个分类）
      * @return
      */
     @PostMapping
-    public ResponseEntity<Void> addBrand(BrandDTO brand, @RequestParam("cids") List<Long> cids) {
-        brandService.saveBrand(brand, cids);
+    public ResponseEntity<Void> addBrand(BrandDTO brandDTO, @RequestParam("cids") List<Long> cids) {
+        brandService.saveBrand(brandDTO, cids);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
@@ -72,7 +70,7 @@ public class BrandController {
      * @return
      */
     @PutMapping
-    public ResponseEntity<Void> updateBrand(BrandDTO brandVo) {
+    public ResponseEntity<Void> updateBrand(UpdateBrandDTO brandVo) {
         brandService.updateBrand(brandVo);
         return ResponseEntity.ok().build();
     }
@@ -113,6 +111,7 @@ public class BrandController {
 
     /**
      * 根据ids查询品牌
+     *
      * @param ids
      * @return
      */
@@ -120,8 +119,6 @@ public class BrandController {
     public ResponseEntity<List<BrandDTO>> queryBrandsByIds(@RequestParam("ids") List<Long> ids) {
         return ResponseEntity.ok(brandService.queryBrandByIds(ids));
     }
-
-
 
 
 }

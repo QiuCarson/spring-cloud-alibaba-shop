@@ -1,7 +1,16 @@
 package com.phpsong.product.service.domain.entity.product;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@AllArgsConstructor
+@Data
+@NoArgsConstructor
+@Builder
 @Table(name = "tb_brand")
 public class Brand {
     /**
@@ -26,75 +35,4 @@ public class Brand {
      */
     private String letter;
 
-    /**
-     * 获取品牌id
-     *
-     * @return id - 品牌id
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * 设置品牌id
-     *
-     * @param id 品牌id
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
-     * 获取品牌名称
-     *
-     * @return name - 品牌名称
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * 设置品牌名称
-     *
-     * @param name 品牌名称
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * 获取品牌图片地址
-     *
-     * @return image - 品牌图片地址
-     */
-    public String getImage() {
-        return image;
-    }
-
-    /**
-     * 设置品牌图片地址
-     *
-     * @param image 品牌图片地址
-     */
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    /**
-     * 获取品牌的首字母
-     *
-     * @return letter - 品牌的首字母
-     */
-    public String getLetter() {
-        return letter;
-    }
-
-    /**
-     * 设置品牌的首字母
-     *
-     * @param letter 品牌的首字母
-     */
-    public void setLetter(String letter) {
-        this.letter = letter;
-    }
 }

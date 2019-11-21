@@ -1,35 +1,28 @@
-package com.phpsong.product.service.domain.entity.product;
+package com.phpsong.product.api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
 @Builder
-@Table(name = "tb_stock")
-public class Stock {
+public class StockDTO {
     /**
      * 库存对应的商品sku id
      */
-    @Id
-    @Column(name = "sku_id")
     private Long skuId;
 
     /**
      * 可秒杀库存
      */
-    @Column(name = "seckill_stock")
     private Integer seckillStock;
 
     /**
      * 秒杀总数量
      */
-    @Column(name = "seckill_total")
     private Integer seckillTotal;
 
     /**

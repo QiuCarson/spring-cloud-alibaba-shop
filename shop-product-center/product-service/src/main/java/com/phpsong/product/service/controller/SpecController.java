@@ -1,8 +1,8 @@
 package com.phpsong.product.service.controller;
 
-import com.leyou.item.pojo.SpecGroup;
-import com.leyou.item.pojo.SpecParam;
-import com.leyou.service.service.SpecService;
+import com.phpsong.product.api.dto.SpecGroupDTO;
+import com.phpsong.product.api.dto.SpecParamDTO;
+import com.phpsong.product.service.service.SpecService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +29,7 @@ public class SpecController {
      * @return
      */
     @GetMapping("groups/{cid}")
-    public ResponseEntity<List<SpecGroup>> querySpecGroupByCid(@PathVariable("cid") Long cid) {
+    public ResponseEntity<List<SpecGroupDTO>> querySpecGroupByCid(@PathVariable("cid") Long cid) {
         return ResponseEntity.ok(specService.querySpecGroupByCid(cid));
     }
 
@@ -43,7 +43,7 @@ public class SpecController {
      * @return
      */
     @GetMapping("params")
-    public ResponseEntity<List<SpecParam>> querySpecParams(
+    public ResponseEntity<List<SpecParamDTO>> querySpecParams(
             @RequestParam(value = "gid", required = false) Long gid,
             @RequestParam(value = "cid", required = false) Long cid,
             @RequestParam(value = "searching", required = false) Boolean searching,
@@ -59,7 +59,7 @@ public class SpecController {
      * @return
      */
     @PostMapping("group")
-    public ResponseEntity<Void> saveSpecGroup(@RequestBody SpecGroup specGroup) {
+    public ResponseEntity<Void> saveSpecGroup(@RequestBody SpecGroupDTO specGroup) {
         specService.saveSpecGroup(specGroup);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
@@ -84,7 +84,7 @@ public class SpecController {
      * @return
      */
     @PutMapping("group")
-    public ResponseEntity<Void> updateSpecGroup(@RequestBody SpecGroup specGroup) {
+    public ResponseEntity<Void> updateSpecGroup(@RequestBody SpecGroupDTO specGroup) {
         specService.updateSpecGroup(specGroup);
         return ResponseEntity.ok().build();
     }
@@ -96,7 +96,7 @@ public class SpecController {
      * @return
      */
     @PostMapping("param")
-    public ResponseEntity<Void> saveSpecParam(@RequestBody SpecParam specParam) {
+    public ResponseEntity<Void> saveSpecParam(@RequestBody SpecParamDTO specParam) {
         specService.saveSpecParam(specParam);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
@@ -121,7 +121,7 @@ public class SpecController {
      * @return
      */
     @PutMapping("param")
-    public ResponseEntity<Void> updateSpecParam(@RequestBody SpecParam specParam) {
+    public ResponseEntity<Void> updateSpecParam(@RequestBody SpecParamDTO specParam) {
         specService.updateSpecParam(specParam);
         return ResponseEntity.ok().build();
     }
@@ -133,7 +133,7 @@ public class SpecController {
      * @return
      */
     @GetMapping("{cid}")
-    public ResponseEntity<List<SpecGroup>> querySpecsByCid(@PathVariable("cid") Long cid) {
+    public ResponseEntity<List<SpecGroupDTO>> querySpecsByCid(@PathVariable("cid") Long cid) {
         //todo
         return ResponseEntity.ok(specService.querySpecsByCid(cid));
     }

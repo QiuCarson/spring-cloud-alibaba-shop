@@ -1,12 +1,15 @@
 package com.phpsong.product.service.service.impl;
 
-import com.leyou.common.enums.ExceptionEnum;
-import com.leyou.common.exception.LyException;
-import com.leyou.item.pojo.SpecGroup;
-import com.leyou.item.pojo.SpecParam;
-import com.leyou.service.mapper.SpecGroupMapper;
-import com.leyou.service.mapper.SpecParamMapper;
-import com.leyou.service.service.SpecService;
+import com.phpsong.common.enums.ExceptionEnum;
+import com.phpsong.common.exception.ShopException;
+import com.phpsong.common.utils.BeanUtil;
+import com.phpsong.product.api.dto.SpecGroupDTO;
+import com.phpsong.product.api.dto.SpecParamDTO;
+import com.phpsong.product.service.dao.product.SpecGroupMapper;
+import com.phpsong.product.service.dao.product.SpecParamMapper;
+import com.phpsong.product.service.domain.entity.product.SpecGroup;
+import com.phpsong.product.service.domain.entity.product.SpecParam;
+import com.phpsong.product.service.service.SpecService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -31,48 +34,51 @@ public class SpecServiceImpl implements SpecService {
 
 
     @Override
-    public List<SpecGroup> querySpecGroupByCid(Long cid) {
+    public List<SpecGroupDTO> querySpecGroupByCid(Long cid) {
         SpecGroup specGroup = new SpecGroup();
         specGroup.setCid(cid);
         List<SpecGroup> specGroupList = specGroupMapper.select(specGroup);
         if (CollectionUtils.isEmpty(specGroupList)) {
-            throw new LyException(ExceptionEnum.SPEC_GROUP_NOT_FOUND);
+            throw new ShopException(ExceptionEnum.SPEC_GROUP_NOT_FOUND);
         }
-        return specGroupList;
+
+        return BeanUtil.copyList(specGroupList, SpecGroupDTO.class);
     }
 
     @Override
-    public void saveSpecGroup(SpecGroup specGroup) {
+    public void saveSpecGroup(SpecGroupDTO specGroupDTO) {
+        SpecGroup specGroup = BeanUtil.copyProperties(specGroupDTO, SpecGroup.class);
         int count = specGroupMapper.insert(specGroup);
         if (count != 1) {
-            throw new LyException(ExceptionEnum.SPEC_GROUP_CREATE_FAILED);
+            throw new ShopException(ExceptionEnum.SPEC_GROUP_CREATE_FAILED);
         }
     }
 
     @Override
     public void deleteSpecGroup(Long id) {
         if (id == null) {
-            throw new LyException(ExceptionEnum.INVALID_PARAM);
+            throw new ShopException(ExceptionEnum.INVALID_PARAM);
         }
         SpecGroup specGroup = new SpecGroup();
         specGroup.setId(id);
         int count = specGroupMapper.deleteByPrimaryKey(specGroup);
         if (count != 1) {
-            throw new LyException(ExceptionEnum.DELETE_SPEC_GROUP_FAILED);
+            throw new ShopException(ExceptionEnum.DELETE_SPEC_GROUP_FAILED);
         }
     }
 
     @Override
-    public void updateSpecGroup(SpecGroup specGroup) {
+    public void updateSpecGroup(SpecGroupDTO specGroupDTO) {
+        SpecGroup specGroup = BeanUtil.copyProperties(specGroupDTO, SpecGroup.class);
         int count = specGroupMapper.updateByPrimaryKey(specGroup);
         if (count != 1) {
-            throw new LyException(ExceptionEnum.UPDATE_SPEC_GROUP_FAILED);
+            throw new ShopException(ExceptionEnum.UPDATE_SPEC_GROUP_FAILED);
         }
     }
 
 
     @Override
-    public List<SpecParam> querySpecParams(Long gid, Long cid, Boolean searching, Boolean generic) {
+    public List<SpecParamDTO> querySpecParams(Long gid, Long cid, Boolean searching, Boolean generic) {
         SpecParam specParam = new SpecParam();
         specParam.setGroupId(gid);
         specParam.setCid(cid);
@@ -80,47 +86,50 @@ public class SpecServiceImpl implements SpecService {
         specParam.setGeneric(generic);
         List<SpecParam> specParamList = specParamMapper.select(specParam);
         if (CollectionUtils.isEmpty(specParamList)) {
-            throw new LyException(ExceptionEnum.SPEC_PARAM_NOT_FOUND);
+            throw new ShopException(ExceptionEnum.SPEC_PARAM_NOT_FOUND);
         }
-        return specParamList;
+
+        return BeanUtil.copyList(specParamList, SpecParamDTO.class);
     }
 
     @Override
-    public void saveSpecParam(SpecParam specParam) {
+    public void saveSpecParam(SpecParamDTO specParamDTO) {
+        SpecParam specParam = BeanUtil.copyProperties(specParamDTO, SpecParam.class);
         int count = specParamMapper.insert(specParam);
         if (count != 1) {
-            throw new LyException(ExceptionEnum.SPEC_PARAM_CREATE_FAILED);
+            throw new ShopException(ExceptionEnum.SPEC_PARAM_CREATE_FAILED);
         }
     }
 
     @Override
-    public void updateSpecParam(SpecParam specParam) {
+    public void updateSpecParam(SpecParamDTO specParamDTO) {
+        SpecParam specParam = BeanUtil.copyProperties(specParamDTO, SpecParam.class);
         int count = specParamMapper.updateByPrimaryKeySelective(specParam);
         if (count != 1) {
-            throw new LyException(ExceptionEnum.UPDATE_SPEC_PARAM_FAILED);
+            throw new ShopException(ExceptionEnum.UPDATE_SPEC_PARAM_FAILED);
         }
     }
 
     @Override
     public void deleteSpecParam(Long id) {
         if (id == null) {
-            throw new LyException(ExceptionEnum.INVALID_PARAM);
+            throw new ShopException(ExceptionEnum.INVALID_PARAM);
         }
         int count = specParamMapper.deleteByPrimaryKey(id);
         if (count != 1) {
-            throw new LyException(ExceptionEnum.DELETE_SPEC_PARAM_FAILED);
+            throw new ShopException(ExceptionEnum.DELETE_SPEC_PARAM_FAILED);
         }
     }
 
     @Override
-    public List<SpecGroup> querySpecsByCid(Long cid) {
-        List<SpecGroup> specGroups = querySpecGroupByCid(cid);
+    public List<SpecGroupDTO> querySpecsByCid(Long cid) {
+        List<SpecGroupDTO> specGroups = querySpecGroupByCid(cid);
 
-        List<SpecParam> specParams = querySpecParams(null, cid, null, null);
+        List<SpecParamDTO> specParams = querySpecParams(null, cid, null, null);
 
-        Map<Long, List<SpecParam>> map = new HashMap<>();
+        Map<Long, List<SpecParamDTO>> map = new HashMap<>();
         //遍历specParams
-        for (SpecParam param : specParams) {
+        for (SpecParamDTO param : specParams) {
             Long groupId = param.getGroupId();
             if (!map.keySet().contains(param.getGroupId())) {
                 //map中key不包含这个组ID
@@ -130,7 +139,7 @@ public class SpecServiceImpl implements SpecService {
             map.get(param.getGroupId()).add(param);
         }
 
-        for (SpecGroup specGroup : specGroups) {
+        for (SpecGroupDTO specGroup : specGroups) {
             specGroup.setParams(map.get(specGroup.getId()));
         }
 

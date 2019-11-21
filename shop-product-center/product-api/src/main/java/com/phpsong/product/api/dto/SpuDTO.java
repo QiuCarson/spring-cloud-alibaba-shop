@@ -1,4 +1,4 @@
-package com.phpsong.product.service.domain.entity.product;
+package com.phpsong.product.api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,19 +6,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
 @Builder
-@Table(name = "tb_spu")
-public class Spu {
+public class SpuDTO {
     /**
      * spu id
      */
-    @Id
-    @GeneratedValue(generator = "JDBC")
     private Long id;
 
     /**
@@ -29,7 +26,6 @@ public class Spu {
     /**
      * 子标题
      */
-    @Column(name = "sub_title")
     private String subTitle;
 
     /**
@@ -50,7 +46,6 @@ public class Spu {
     /**
      * 商品所属品牌id
      */
-    @Column(name = "brand_id")
     private Long brandId;
 
     /**
@@ -66,14 +61,31 @@ public class Spu {
     /**
      * 添加时间
      */
-    @Column(name = "create_time")
     private Date createTime;
 
     /**
      * 最后修改时间
      */
-    @Column(name = "last_update_time")
     private Date lastUpdateTime;
 
+    /**
+     * spu所属的分类名称
+     */
+    private String cname;
+
+    /**
+     * spu所属品牌名
+     */
+    private String bname;
+
+    /**
+     * spu详情
+     */
+    private SpuDetailDTO spuDetail;
+
+    /**
+     * sku集合
+     */
+    private List<SkuDTO> skus;
 
 }

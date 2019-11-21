@@ -1,23 +1,18 @@
-package com.phpsong.product.service.domain.entity.product;
+package com.phpsong.product.api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-
-@AllArgsConstructor
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "tb_category")
-public class Category {
+public class CategoryDTO {
     /**
      * 类目id
      */
-    @Id
-    @GeneratedValue(generator = "JDBC")
     private Long id;
 
     /**
@@ -28,17 +23,17 @@ public class Category {
     /**
      * 父类目id,顶级类目填0
      */
-    @Column(name = "parent_id")
     private Long parentId;
 
     /**
      * 是否为父节点，0为否，1为是
      */
-    @Column(name = "is_parent")
     private Boolean isParent;
 
     /**
      * 排序指数，越小越靠前
      */
     private Integer sort;
+
+
 }

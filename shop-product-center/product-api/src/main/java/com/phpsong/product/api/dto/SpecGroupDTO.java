@@ -1,23 +1,20 @@
-package com.phpsong.product.service.domain.entity.product;
+package com.phpsong.product.api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
 @Builder
-@Table(name = "tb_spec_group")
-public class SpecGroup {
+public class SpecGroupDTO {
     /**
      * 主键
      */
-    @Id
-    @GeneratedValue(generator = "JDBC")
     private Long id;
 
     /**
@@ -30,5 +27,6 @@ public class SpecGroup {
      */
     private String name;
 
+    private List<SpecParamDTO> params;
 
 }
