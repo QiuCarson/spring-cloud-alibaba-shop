@@ -6,8 +6,14 @@ import com.phpsong.common.vo.ExceptionResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import java.util.List;
 
 /**
  * @author bystander
@@ -42,4 +48,32 @@ public class BasicExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .body(new ExceptionResult(ExceptionEnum.UNKNOW_ERROR));
     }
+
+    /**
+     * 校验错误拦截处理
+     *
+     * @param exception 错误信息集合
+     * @return 错误信息
+     */
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ExceptionResult> validationBodyException(MethodArgumentNotValidException exception){
+
+        BindingResult result = exception.getBindingResult();
+        if (result.hasErrors()) {
+
+            List<ObjectError> errors = result.getAllErrors();
+
+            errors.forEach(p ->{
+
+                FieldError fieldError = (FieldError) p;
+                log.error("Data check failure : object{"+fieldError.getObjectName()+"},field{"+fieldError.getField()+
+                        "},errorMessage{"+fieldError.getDefaultMessage()+"}");
+
+            });
+
+        }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                .body(new ExceptionResult(ExceptionEnum.PARAM_ERROR));
+    }
+
 }

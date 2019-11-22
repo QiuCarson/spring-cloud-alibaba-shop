@@ -24,4 +24,10 @@ public class ExceptionResult {
         this.message = em.message();
         this.timestamp = System.currentTimeMillis();
     }
+
+    public ExceptionResult(int status,String message){
+        this.status = status;
+        this.message = message;
+        this.timestamp = System.currentTimeMillis();
+    }
 }

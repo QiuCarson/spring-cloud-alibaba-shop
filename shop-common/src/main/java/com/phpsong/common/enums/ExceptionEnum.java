@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public enum ExceptionEnum {
     UNKNOW_ERROR(500,"未知错误"),
+    PARAM_ERROR(200,"参数错误"),
 
     BRAND_CREATE_FAILED(500, "新增品牌失败"),
     BRAND_NOT_FOUND(404, "品牌查询失败"),
