@@ -27,7 +27,7 @@
         <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
         <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
 
-        <mysql.version>8.0.13</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <swagger2.version>2.9.2</swagger2.version>
         <lombok.version>1.18.10</lombok.version>
         <mybatis.version>2.1.5</mybatis.version>
